@@ -29,7 +29,8 @@ function App()
     }
     else
     {
-      setMensaje(data.mensaje); 
+      setMensaje(data.mensaje);
+      
     }
 
   }
@@ -51,6 +52,7 @@ function App()
     else
     {
       setMensaje(data.mensaje);
+      setTimeout(() => {setMensaje('');}, 5000);
     } 
   }
 
@@ -58,45 +60,117 @@ function App()
   {
     localStorage.removeItem('token');
     setMensaje('Sesion cerrada');
+    setTimeout(() => {setMensaje('');}, 5000);
     setPantalla('login');
+  }
+
+  //LimpiarCampos
+  const limpiarCampos = () =>
+  {
+    setEmail('');
+    setPassword('');
+    setNombre('');
   }
 
   //Creamos la pantalla de login
   if (pantalla === 'login')
     return (
-
-    <div>
-      <h2>LOGIN</h2>
-      <input placeholder="Email" onChange={e => setEmail(e.target.value)}/>
-      <input placeholder="Contraseña" type="password" onChange={e => setPassword(e.target.value)}/>
-      <button onClick={manejoLogin}>Iniciar sesion</button>
-      <p>{mensaje}</p>
-      <p>¿Sin cuenta? <span onClick={() => setPantalla('registro')}>Registrate</span></p>
+    <div className="min-h-screen bg-gray-900 flex items-center justify-center">
+      <div className="bg-gray-800 p-8 rounded-xl shadow-lg w-96">
+        <h2 className="text-3xl font-bold text-white mb-6 text-center">Login</h2>
+        <input
+          className="w-full bg-gray-700 text-white p-3 rounded-lg mb-4 outline-none"
+          value={email}
+          placeholder="Email"
+          onChange={e => setEmail(e.target.value)}
+        />
+        <input
+          className="w-full bg-gray-700 text-white p-3 rounded-lg mb-4 outline-none"
+          value={password}
+          placeholder="Contraseña"
+          type="password"
+          onChange={e => setPassword(e.target.value)}
+        />
+        <button
+          className="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold p-3 rounded-lg"
+          onClick={manejoLogin}
+        >
+          Iniciar sesión
+        </button>
+        <p className="text-red-400 text-center mt-3">{mensaje}</p>
+        <p className="text-gray-400 text-center mt-4">
+          ¿Sin cuenta?{' '}
+          <span className="text-blue-400 cursor-pointer hover:underline" 
+          onClick={() =>{
+            limpiarCampos();
+            setPantalla('registro');
+          }}>
+            Registrate
+          </span>
+        </p>
+      </div>
     </div>
-    );
+  );
+
   if (pantalla === 'registro')
     return (
-      
-      <div>
-        <h2>REGISTRO</h2>
-        <input placeholder="Nombre" onChange={e => setNombre(e.target.value)}/>
-        <input placeholder="Email" onChange={e => setEmail(e.target.value)}/>
-        <input placeholder="Contraseña" type="password" onChange={e => setPassword(e.target.value)}/>
-        <button onClick={manejoRegistro}>Registrar</button>
-        <p>{mensaje}</p>
-        <p>¿Ya tienes cuenta?<span onClick={() => setPantalla('login')}>Logueate</span></p>
+    <div className="min-h-screen bg-gray-900 flex items-center justify-center">
+      <div className="bg-gray-800 p-8 rounded-xl shadow-lg w-96">
+       <h2 className="text-3xl font-bold text-white mb-6 text-center">REGISTRO</h2>
+        <input
+          className="w-full bg-gray-700 text-white p-3 rounded-lg mb-4 outline-none" 
+          value={nombre}
+          placeholder="Nombre" 
+          onChange={e => setNombre(e.target.value)}
+        />
+        <input 
+          className="w-full bg-gray-700 text-white p-3 rounded-lg mb-4 outline-none"
+          value={email}
+          placeholder="Email"
+          onChange={e => setEmail(e.target.value)}
+        />
+        <input 
+          className="w-full bg-gray-700 text-white p-3 rounded-lg mb-4 outline-none"
+          value={password}
+          placeholder="Contraseña" 
+          type="password"
+          onChange={e => setPassword(e.target.value)}
+        />
+        <button 
+          className="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold p-3 rounded-lg"
+          onClick={manejoRegistro}
+          >
+            Registrar
+        </button>
+        <p className="text-red-400 text-center mt-3">{mensaje}</p>
+        <p className="text-red-400 text-center mt-3">
+          ¿Ya tienes cuenta?{' '}
+          <span className="text-blue-400 cursor-pointer hover:underline" 
+          onClick={() => {
+            limpiarCampos();
+            setPantalla('login');
+            }}>
+            Logueate
+          </span>
+        </p>
       </div>
+    </div>
 
     );
   if (pantalla === 'perfil')
     return(
-
-      <div>
-        <h2>PERFIL</h2>
-        <h3>Bienvenido usuario</h3>
-        <button onClick={manejoLogout}>Cerrar Sesion</button>
+    <div className="min-h-screen bg-gray-900 flex items-center justify-center">
+      <div className="bg-gray-800 p-8 rounded-xl shadow-lg w-96">
+      <h2 className="text-3xl font-bold text-white mb-6 text-center">PERFIL</h2>
+       <h3 className="text-xl font-bold text-white mb-6 text-center">Bienvenido usuario</h3>
+        <button 
+          className="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold p-3 rounded-lg"
+          onClick={manejoLogout}
+          >
+            Cerrar Sesion
+        </button>
       </div>
-    
+    </div>
     );
 }
 
