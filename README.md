@@ -1,70 +1,80 @@
-# Getting Started with Create React App
+# ⚡ App Fullstack con React + JWT + PostgreSQL
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Aplicación fullstack con autenticación completa. Frontend en React 
+conectado a una API REST en Node.js con JWT, bcrypt y PostgreSQL en Railway.
 
-## Available Scripts
+---
 
-In the project directory, you can run:
+## 🖥️ Pantallas
 
-### `npm start`
+- **Login** — inicio de sesión con email y password
+- **Registro** — creación de cuenta nueva
+- **Perfil** — pantalla protegida, solo accesible con token válido
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+---
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## 🛠️ Tecnologías
 
-### `npm test`
+**Frontend**
+- React
+- Tailwind CSS
+- fetch API
+- localStorage
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+**Backend**
+- Node.js + Express
+- jsonwebtoken
+- bcrypt
+- pg + PostgreSQL en Railway
+- CORS
 
-### `npm run build`
+---
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## ⚙️ Instalación
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+**Backend:**
+```bash
+cd login-jwt
+npm install
+node app.js
+```
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Crear `.env`:
 
-### `npm run eject`
+**Frontend:**
+```bash
+cd frontend-login
+npm install
+npm start
+```
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+---
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## 🔄 Flujo
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+1. Usuario se registra — contraseña encriptada con bcrypt y guardada en PostgreSQL
+2. Usuario inicia sesión — backend verifica credenciales y devuelve token JWT
+3. React guarda el token en localStorage
+4. Usuario accede al perfil — token válido da acceso a la pantalla protegida
+5. Al cerrar sesión — token eliminado del localStorage
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+---
 
-## Learn More
+## 🌐 Demo
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+[https://frontend-login-xxxx.vercel.app](https://front-end-login-topaz.vercel.app/)
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+---
 
-### Code Splitting
+## 🔒 Seguridad
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+- Contraseñas encriptadas con bcrypt (10 salt rounds)
+- Tokens JWT con expiración de 1 hora
+- CORS configurado para permitir solo el frontend
+- DATABASE_URL en `.env`, nunca en GitHub
 
-### Analyzing the Bundle Size
+---
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+## 👨‍💻 Autor
 
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+**Daniel Iguardia** — [GitHub](https://github.com/iguardiaDev)
