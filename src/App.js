@@ -12,7 +12,7 @@ function App()
   const manejoLogin = async (e) =>
   {
     //
-    const res = await fetch('http://localhost:3000/usuarios/login',
+    const res = await fetch('https://login-jwt-production.up.railway.app/usuarios/login',
     {
       method: 'POST', //Es el tipo de request que haremos
       headers: {'Content-Type': 'application/json'}, //Estamos enviando un JSON
@@ -37,7 +37,7 @@ function App()
 
   const manejoRegistro = async (e) =>
   {
-    const res = await fetch('http://localhost:3000/usuarios/registro',
+    const res = await fetch('https://login-jwt-production.up.railway.app/usuarios/registro',
     {
       method: 'POST',
       headers: {'Content-Type': 'application/json'},
