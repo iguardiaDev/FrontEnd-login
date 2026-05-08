@@ -59,6 +59,12 @@ npm start
 5. Al cerrar sesión — token eliminado del localStorage
 
 ---
+| Proyecto | Demo | Tecnologías |
+|----------|------|-------------|
+| [🔐 Login JWT](https://github.com/iguardiaDev/login-jwt) | [Backend](https://login-jwt-production.up.railway.app) | Node.js, JWT, PostgreSQL |
+| [⚡ App Fullstack](https://github.com/iguardiaDev/frontend-login) | [Demo](https://frontend-login-xxxx.vercel.app) | React, Tailwind, JWT |
+
+---
 
 ## 🔒 Seguridad
 
